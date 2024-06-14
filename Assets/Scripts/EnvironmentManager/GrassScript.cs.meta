@@ -3,7 +3,8 @@ guid: 289e909f3e4302047b874e1eae0c98d7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - grassBlockPrefab: {fileID: 2357419356555822539, guid: cf22a2db10f09a34495e9f83913738c8, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

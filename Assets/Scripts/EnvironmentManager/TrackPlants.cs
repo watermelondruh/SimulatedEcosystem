@@ -11,6 +11,8 @@ public class TrackPlants : MonoBehaviour
     public int numberOfPlants = 5;
     public float minX = -40.5f;
     public float maxX = 40.5f;
+    public float minY = -1.0f;
+    public float maxY = 5.0f;
     public float minZ = -40.5f;
     public float maxZ = 40.5f;
 
