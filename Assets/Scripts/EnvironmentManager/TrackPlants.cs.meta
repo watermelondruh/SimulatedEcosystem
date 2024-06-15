@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - plantPrefab: {fileID: 1439904337943108576, guid: ef62619642b0df743b22dd5120c6ac4d, type: 3}
+  - plantPrefab: {fileID: 3307405921986161127, guid: b0be909c12de3184b8ad93a5b24bdfef, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
