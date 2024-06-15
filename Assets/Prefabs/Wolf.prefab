@@ -113,7 +113,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.8
+  m_Height: 3
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -136,7 +136,7 @@ MonoBehaviour:
   moveDistance: 1
   unwalkableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16
   isMale: 0
   isReadyToMate: 0
   wolfPrefab: {fileID: 4442917709511306895}

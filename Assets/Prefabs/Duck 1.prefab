@@ -187,7 +187,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.1938534
+  m_Height: 0.5
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -225,10 +225,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  constantSpeed: 3.5
   destinationThreshold: 0.5
   waitTimeBeforeMove: 0.1
   moveDistance: 3
   isMale: 0
   isReadyToMate: 0
   duckPrefab: {fileID: 5808657687344750150}
+  constantSpeed: 3.5
+  hungerRate: 1
+  thirstRate: 1
+  reproductiveUrgeRate: 1
