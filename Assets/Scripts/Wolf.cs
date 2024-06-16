@@ -103,7 +103,11 @@ public class Wolf : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTimeBeforeMove);
 
-        if(reproductiveUrge > hunger && reproductiveUrge > thirst)
+        if (HelperFunctions.CheckIsNearObject(transform, "Tiger", 5f))
+        {
+            RunAwayFromTigers();
+        }
+        else if(reproductiveUrge > hunger && reproductiveUrge > thirst)
         {
             if(isReadyToMate)
             {
@@ -185,6 +189,19 @@ public class Wolf : MonoBehaviour
         agent.isStopped = false;  
     }
 
+    void RunAwayFromTigers()
+    {
+        float detectionRadius = 10.0f; // Radius within which the duck will detect tigers
+        Collider closestTiger = HelperFunctions.GetClosestObject(transform, "Tiger", detectionRadius);
+
+        if (closestTiger != null)
+        {
+            Vector3 safePosition = HelperFunctions.FindSafeRunAwayPosition(transform, closestTiger, 10.0f);
+            agent.SetDestination(safePosition);
+            agent.isStopped = false;
+        }
+    }
+
     void Mate()
     {
         Debug.Log("Mated");
@@ -199,8 +216,9 @@ public class Wolf : MonoBehaviour
         Collider collider = HelperFunctions.GetClosestObject(transform, "Wolf", 1.0f, true, true);
         Wolf father = collider.GetComponent<Wolf>();
 
-        GameObject babyDuck = Instantiate(wolfPrefab, transform.position, Quaternion.identity);
-        babyDuck.GetComponent<Wolf>().InheritGenes(father, this);
+        GameObject babyWolf = Instantiate(wolfPrefab, transform.position, Quaternion.identity);
+        babyWolf.GetComponent<Wolf>().InheritGenes(father, this);
+        babyWolf.transform.parent = father.transform.parent;
         Mate();
     }
 

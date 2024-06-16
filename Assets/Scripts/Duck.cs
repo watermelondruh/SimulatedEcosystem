@@ -102,7 +102,12 @@ public class Duck : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTimeBeforeMove);
         
-        if (HelperFunctions.CheckIsNearObject(transform, "Wolf", 6f))
+        // TODO: run away from both?
+        if (HelperFunctions.CheckIsNearObject(transform, "Tiger", 5f))
+        {
+            RunAwayFromTigers();
+        }
+        else if (HelperFunctions.CheckIsNearObject(transform, "Wolf", 6f))
         {
             RunAwayFromWolves();
         }
@@ -187,6 +192,7 @@ public class Duck : MonoBehaviour
 
         GameObject babyDuck = Instantiate(duckPrefab, transform.position, Quaternion.identity);
         babyDuck.GetComponent<Duck>().InheritGenes(father, this);
+        babyDuck.transform.parent = father.transform.parent;
         Mate();
     }
 
@@ -218,12 +224,26 @@ public class Duck : MonoBehaviour
 
     void RunAwayFromWolves()
     {
-        float detectionRadius = 10f; // Radius within which the duck will detect wolves
+        float detectionRadius = 10.0f; // Radius within which the duck will detect wolves
         Collider closestWolf = HelperFunctions.GetClosestObject(transform, "Wolf", detectionRadius);
 
         if (closestWolf != null)
         {
-            Vector3 safePosition = HelperFunctions.FindSafeRunAwayPosition(transform, closestWolf, 15f);
+            Vector3 safePosition = HelperFunctions.FindSafeRunAwayPosition(transform, closestWolf, 15.0f);
+            agent.SetDestination(safePosition);
+            agent.isStopped = false;
+        }
+    }
+
+
+    void RunAwayFromTigers()
+    {
+        float detectionRadius = 5.0f; // Radius within which the duck will detect tigers
+        Collider closestTiger = HelperFunctions.GetClosestObject(transform, "Tiger", detectionRadius);
+
+        if (closestTiger != null)
+        {
+            Vector3 safePosition = HelperFunctions.FindSafeRunAwayPosition(transform, closestTiger, 10.0f);
             agent.SetDestination(safePosition);
             agent.isStopped = false;
         }
